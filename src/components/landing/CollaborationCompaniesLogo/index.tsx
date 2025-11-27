@@ -4,7 +4,7 @@ import Image from "next/image";
 export function CollaborationCompaniesLogo() {
   return (
     <div className="space-y-5">
-      <BodyText variant="18sb">I samarbejde med</BodyText>
+      <BodyText variant="18Semibold">I samarbejde med</BodyText>
 
       <div className="flex items-center gap-8">
         <Image

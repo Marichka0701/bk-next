@@ -7,7 +7,10 @@ import Image from "next/image";
 
 export function HowItWorksSection() {
   return (
-    <Container className="my-5 py-18 bg-secondary-background rounded-xl">
+    <Container
+      as="section"
+      className="my-5 py-18 bg-secondary-background rounded-xl"
+    >
       <Container
         variant="inner"
         className="flex items-center gap-32"
@@ -34,9 +37,7 @@ export function HowItWorksSection() {
             Fra første henvendelse til færdigt projekt. Klar og tydelig kommunikation hele vejen.
           </BodyText>
 
-          <Button
-            className="flex items-center justify-between"
-          >
+          <Button className="flex items-center justify-between">
             {/* empty div for spacing */}
             <div className="size-5 shrink-0" />
             Kom i gang

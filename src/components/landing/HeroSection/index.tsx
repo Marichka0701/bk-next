@@ -26,7 +26,7 @@ export function HeroSection() {
           <div className="max-w-xl flex flex-col items-start">
             <div className="mb-7.5 py-4 px-6 bg-brand-secondary-100 rounded">
               <BodyText
-                variant="14sb"
+                variant="14Semibold"
                 className="text-secondary-orange-100!"
               >
                 Mere end 20 års erfaring
