@@ -59,7 +59,7 @@ export function AnimatedStepper() {
                   isActive || isCompleted
                     ? "var(--secondary-green)"
                     : "var(--secondary-background)",
-                scale: isActive ? 1.1 : 1,
+                scale: isActive && !isCompleted ? 1.1 : 1,
               }}
               transition={{
                 duration: 0.4,

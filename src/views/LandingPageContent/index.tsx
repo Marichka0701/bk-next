@@ -12,8 +12,8 @@ export function LandingPageContent() {
       <HowItWorksSection />
       <TargetAudienceSection />
       <OurExpertiseSection />
-      {/* <FundedProjectsSection />
-      <Footer /> */}
+      <FundedProjectsSection />
+      <Footer />
     </div>
   );
 }

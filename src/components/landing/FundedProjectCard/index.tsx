@@ -1,18 +1,28 @@
-import { BudjetFormatter } from "@/src/components/landing/BudjetFormatter";
+import { BudgetFormatter } from "@/src/components/landing/BudgetFormatter";
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { Headline } from "@/src/components/shared/ui/typography/Headline";
 import { FundedProject } from "@/src/data/fundedProjects";
+import { cn } from "@/src/lib/cn";
 import Image from "next/image";
+import { HTMLAttributes } from "react";
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
   item: FundedProject;
 }
 
 export function FundedProjectCard({
   item: { imageSrc, imageAlt, title, description, budget, isFlexibleFinancing },
+  className,
+  ...rest
 }: Props) {
   return (
-    <div className="relative w-full bg-secondary-background rounded-xl py-6 px-4.5 flex flex-col">
+    <div
+      className={cn(
+        "relative w-full bg-secondary-background rounded-xl py-6 px-4.5 flex flex-col",
+        className
+      )}
+      {...rest}
+    >
       <Image
         src={imageSrc}
         alt={imageAlt}
@@ -42,10 +52,10 @@ export function FundedProjectCard({
           >
             {title}
           </Headline>
-          <BodyText className="text-gray-600!">{description}</BodyText>
+          <BodyText className="text-gray-600! line-clamp-4">{description}</BodyText>
         </div>
 
-        <BudjetFormatter value={budget} />
+        <BudgetFormatter value={budget} />
       </div>
     </div>
   );

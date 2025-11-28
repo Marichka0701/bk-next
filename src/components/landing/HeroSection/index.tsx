@@ -11,8 +11,14 @@ export function HeroSection() {
       as="section"
       className="lg:h-screen lg:max-h-[800px] bg-brand-primary md:rounded-xl relative overflow-hidden"
     >
+      {/* mobile pattern bg */}
       <div
-        className="absolute top-0 right-0 h-full lg:w-[60%] bg-cover bg-right"
+        className="absolute inset-y-0 right-0 w-[80%] bg-contain bg-no-repeat bg-top-right md:hidden"
+        style={{ backgroundImage: "url('/pattern-bg/hero-section-mobile.webp')" }}
+      />
+      {/* desktop pattern bg */}
+      <div
+        className="absolute inset-y-0 right-0 w-full bg-contain bg-no-repeat bg-right hidden md:block"
         style={{ backgroundImage: "url('/pattern-bg/hero-section.webp')" }}
       />
 
