@@ -19,7 +19,7 @@ export function TargetAudienceCard({
         width={340}
         height={220}
         draggable={false}
-        className="rounded-lg"
+        className="h-[220px] rounded-lg"
       />
 
       <div className="mt-7 flex-1 flex flex-col justify-between gap-12">
