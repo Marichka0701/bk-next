@@ -9,11 +9,16 @@ export function OurExpertiseSection() {
   return (
     <Container
       as="section"
-      className="bg-brand-primary rounded-xl relative overflow-hidden"
+      className="relative bg-brand-primary rounded-xl overflow-hidden"
     >
+      {/* <div
+        className="absolute top-0 right-0 h-full w-[40%] bg-cover bg-right"
+        style={{ backgroundImage: "url('/hero-section-bg.webp')" }}
+      /> */}
+
       <Container
         variant="inner"
-        className="py-18 flex items-center gap-32"
+        className="relative py-18 flex items-center gap-32 z-10"
       >
         <Image
           src="/our-expertise-bg.webp"

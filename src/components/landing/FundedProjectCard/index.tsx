@@ -1,8 +1,8 @@
+import { BudjetFormatter } from "@/src/components/landing/BudjetFormatter";
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { Headline } from "@/src/components/shared/ui/typography/Headline";
 import { FundedProject } from "@/src/data/fundedProjects";
 import Image from "next/image";
-import { BudjetFormatter } from "../BudjetFormatter";
 
 interface Props {
   item: FundedProject;

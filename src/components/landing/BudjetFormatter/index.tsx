@@ -1,4 +1,4 @@
-import { Headline } from "../../shared/ui/typography/Headline";
+import { Headline } from "@/src/components/shared/ui/typography/Headline";
 
 interface Props {
   value: number;

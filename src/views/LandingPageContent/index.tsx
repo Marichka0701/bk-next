@@ -7,7 +7,7 @@ import { TargetAudienceSection } from "@/src/components/landing/TargetAudienceSe
 
 export function LandingPageContent() {
   return (
-    <div className="py-5">
+    <div className="py-5 space-y-8">
       <HeroSection />
       <HowItWorksSection />
       <TargetAudienceSection />

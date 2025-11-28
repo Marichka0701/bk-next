@@ -13,7 +13,7 @@ export function HeroSection() {
     >
       <div
         className="absolute top-0 right-0 h-full w-[60%] bg-cover bg-right"
-        style={{ backgroundImage: "url('/hero-section-bg.webp')" }}
+        style={{ backgroundImage: "url('/pattern-bg/hero-section.webp')" }}
       />
 
       <Container
