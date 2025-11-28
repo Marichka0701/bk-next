@@ -102,7 +102,7 @@ export function Footer() {
                   Terms of Service
                 </li>
                 <li className="text-gray-100/60 hover:text-gray-100 transition-colors cursor-pointer">
-                  Privacy Policy
+                  Privary Policy
                 </li>
               </ul>
             </div>
@@ -161,17 +161,19 @@ export function Footer() {
                   Terms of Service
                 </li>
                 <li className="text-gray-100/60 hover:text-gray-100 transition-colors cursor-pointer">
-                  Privacy Policy
+                  Link
                 </li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div className="mt-10 md:mt-15 pt-6 md:pt-8 border-t border-gray-100/10">
+        <div className="mt-10 md:mt-15 pt-6 md:pt-8 border-t border-gray-100/10 flex items-center justify-center md:justify-between gap-12">
           <BodyText className="text-gray-100/60! text-center lg:text-left">
             © {new Date().getFullYear()} Byggekredit
           </BodyText>
+
+          <BodyText className="hidden md:block text-gray-100/60! text-center lg:text-left">Privary Policy</BodyText>
         </div>
       </div>
     </Container>
