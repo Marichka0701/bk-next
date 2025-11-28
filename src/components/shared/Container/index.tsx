@@ -6,8 +6,8 @@ const containerVariants = tv({
   base: "mx-auto",
   variants: {
     variant: {
-      inner: "max-w-[1164px]",
-      outer: "mx-5",
+      inner: "max-w-[1164px] px-5",
+      outer: "md:mx-5",
     },
   },
   defaultVariants: {

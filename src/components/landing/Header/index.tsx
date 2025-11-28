@@ -8,7 +8,7 @@ export function Header() {
       variant="inner"
       className="p-0"
     >
-      <Logo />
+      <Logo className="max-w-[180px] md:max-w-none md:w-fit" />
     </Container>
   );
 }

@@ -9,7 +9,7 @@ export function OurExpertiseSection() {
   return (
     <Container
       as="section"
-      className="relative bg-brand-primary rounded-xl overflow-hidden"
+      className="relative bg-brand-primary md:rounded-xl overflow-hidden"
     >
       {/* <div
         className="absolute top-0 right-0 h-full w-[40%] bg-cover bg-right"
@@ -18,15 +18,15 @@ export function OurExpertiseSection() {
 
       <Container
         variant="inner"
-        className="relative py-18 flex items-center gap-32 z-10"
+        className="relative py-12.5 md:py-18 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16 lg:gap-32 z-10"
       >
         <Image
-          src="/our-expertise-bg.webp"
+          src="/landing-section-bg/our-expertise-bg.webp"
           alt="our expertise bg"
           width={450}
           height={600}
           draggable={false}
-          className="rounded-lg"
+          className="w-full md:w-[350px] lg:w-[450px] h-fit rounded-lg"
         />
 
         <div>
@@ -59,7 +59,7 @@ export function OurExpertiseSection() {
 
           <Button
             variant="secondary"
-            className="mt-10 max-w-xs flex items-center justify-between"
+            className="mt-10 max-w-none md:max-w-xs flex items-center justify-between"
           >
             {/* empty div for spacing */}
             <div className="size-5 shrink-0" />

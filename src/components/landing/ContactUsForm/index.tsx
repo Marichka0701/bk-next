@@ -30,7 +30,7 @@ export function ContactUsForm() {
   };
 
   return (
-    <div className="lg:min-w-[450px] bg-secondary-background py-12.5 px-10 w-fit rounded-xl flex flex-col gap-10">
+    <div className="w-full max-w-xl lg:min-w-[450px] bg-secondary-background py-8 md:py-12.5 px-4 md:px-10 lg:w-fit rounded-xl flex flex-col gap-10">
       <Headline
         as="h3"
         variant="h3"

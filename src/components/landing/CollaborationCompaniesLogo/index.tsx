@@ -1,12 +1,19 @@
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
+import { cn } from "@/src/lib/cn";
 import Image from "next/image";
+import { HTMLAttributes } from "react";
 
-export function CollaborationCompaniesLogo() {
+interface Props extends HTMLAttributes<HTMLDivElement> {}
+
+export function CollaborationCompaniesLogo({ className, ...rest }: Props) {
   return (
-    <div className="space-y-5">
+    <div
+      className={cn("space-y-5", className)}
+      {...rest}
+    >
       <BodyText variant="18Semibold">I samarbejde med</BodyText>
 
-      <div className="flex items-center gap-8">
+      <div className="grid grid-cols-2 sm:flex items-center gap-8">
         <Image
           src="/simpel-kredit-logo.svg"
           alt="simpel kredit logo"
@@ -20,6 +27,15 @@ export function CollaborationCompaniesLogo() {
           width={100}
           height={50}
           draggable={false}
+          className="hidden md:block"
+        />
+        <Image
+          src="/dansk-boliglan-mobile-logo.svg"
+          alt="dansk boliglan logo"
+          width={160}
+          height={32}
+          draggable={false}
+          className="md:hidden"
         />
       </div>
     </div>

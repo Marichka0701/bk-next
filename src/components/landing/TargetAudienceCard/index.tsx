@@ -12,7 +12,7 @@ export function TargetAudienceCard({
   item: { imageSrc, imageAlt, title, description, ctaButton },
 }: Props) {
   return (
-    <div className="w-full bg-secondary-background rounded-xl py-6 px-4.5 flex flex-col">
+    <div className="w-full bg-secondary-background md:rounded-xl py-6 px-4.5 flex flex-col">
       <Image
         src={imageSrc}
         alt={imageAlt}
@@ -34,7 +34,7 @@ export function TargetAudienceCard({
           <BodyText className="text-gray-600!">{description}</BodyText>
         </div>
 
-        <button className="flex items-center justify-center md:justify-start gap-2">
+        <button className="flex items-center justify-center md:justify-start gap-2 cursor-pointer outline-none">
           <BodyText
             variant="20Medium"
             className="text-brand-primary!"
