@@ -13,12 +13,12 @@ export function OurExpertiseSection() {
     >
       {/* desktop pattern bg */}
       <div
-        className="absolute top-0 bottom-0 right-0 h-full w-1/3 bg-cover bg-repeat bg-right"
-        style={{ backgroundImage: "url('/pattern-bg/our-expertise.png')" }}
+        className="absolute inset-y-0 right-0 h-full w-1/3 bg-cover bg-repeat bg-right hidden md:block"
+        style={{ backgroundImage: "url('/pattern-bg/our-expertise.webp')" }}
       />
       {/* mobile pattern bg */}
       <div
-        className="absolute inset-y-0 right-0 w-[80%] bg-contain bg-no-repeat bg-top-right md:hidden"
+        className="absolute inset-y-0 right-0 w-2/5 bg-cover bg-no-repeat md:hidden"
         style={{ backgroundImage: "url('/pattern-bg/our-expertise-mobile.webp')" }}
       />
 

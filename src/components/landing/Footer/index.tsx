@@ -11,7 +11,7 @@ export function Footer() {
     >
       {/* mobile pattern bg */}
       <div
-        className="absolute inset-y-0 right-0 w-[80%] bg-contain bg-no-repeat bg-top-right md:hidden"
+        className="absolute top-1/5 bottom-0 right-0 w-[80%] bg-contain bg-no-repeat bg-top-right md:hidden"
         style={{ backgroundImage: "url('/pattern-bg/footer-mobile.webp')" }}
       />
       {/* desktop pattern bg */}

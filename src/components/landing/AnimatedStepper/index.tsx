@@ -2,10 +2,10 @@
 
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { cn } from "@/src/lib/cn";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Check } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const steps = [
   { id: 1, label: "Henvendelse" },
@@ -22,8 +22,12 @@ const steps = [
 export function AnimatedStepper() {
   const [activeStep, setActiveStep] = useState(1);
 
+  const containerRef = useRef(null);
+
+  const isInView = useInView(containerRef, { amount: 0.8, once: true });
+
   useEffect(() => {
-    if (activeStep >= steps.length) return;
+    if (!isInView || activeStep >= steps.length) return;
 
     const timer = setInterval(() => {
       setActiveStep((prev) => {
@@ -33,19 +37,22 @@ export function AnimatedStepper() {
         }
         return prev + 1;
       });
-    }, 3000);
+    }, 750);
 
     return () => clearInterval(timer);
-  }, [activeStep]);
+  }, [activeStep, isInView]);
 
   return (
-    <div className="flex items-start gap-3">
+    <div
+      ref={containerRef}
+      className="flex items-start gap-4"
+    >
       <div
         style={{
           background:
             "linear-gradient(180deg, rgba(215, 215, 215, 0.44) 0%, rgba(222, 222, 222, 0.44) 41.91%, rgba(255, 255, 255, 0.44) 100%)",
         }}
-        className="p-3 w-fit space-y-8 rounded-full"
+        className="p-3 w-fit flex flex-col gap-8 rounded-full"
       >
         {steps.map((step) => {
           const isActive = step.id === activeStep;
@@ -60,7 +67,7 @@ export function AnimatedStepper() {
                   isActive || isCompleted
                     ? "var(--secondary-green)"
                     : "var(--secondary-background)",
-                scale: isActive && !isCompleted ? 1.1 : 1,
+                scale: isActive && !isCompleted ? 1.05 : 1,
               }}
               transition={{
                 duration: 0.4,
@@ -111,7 +118,7 @@ export function AnimatedStepper() {
         })}
       </div>
 
-      <div className="py-4 space-y-10.25">
+      <div className="py-3 flex flex-col gap-8">
         {steps.map((step) => {
           const isActive = step.id === activeStep;
           const isCompleted = step.id < activeStep;
@@ -119,8 +126,9 @@ export function AnimatedStepper() {
           return (
             <motion.div
               key={step.id}
+              className="h-9 flex items-center"
               animate={{
-                opacity: isActive ? 1 : isCompleted ? 1 : 0.5,
+                opacity: isActive ? 1 : isCompleted ? 1 : 0.7,
                 x: isActive ? 4 : 0,
               }}
               transition={{
