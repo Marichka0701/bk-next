@@ -1,7 +1,8 @@
-import Image from "next/image";
-import { HTMLAttributes } from "react";
+import Image, { ImageProps } from "next/image";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {}
+interface Props extends Omit<ImageProps, "src" | "alt" | "width" | "height"> {
+  className?: string;
+}
 
 export function Logo({ className, ...rest }: Props) {
   return (
