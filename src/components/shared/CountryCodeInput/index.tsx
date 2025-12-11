@@ -1,5 +1,11 @@
-import { Input, Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
-import { FC } from "react";
+import {
+  Input,
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@headlessui/react";
+import { FC, ButtonHTMLAttributes } from "react";
 
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { useCountryFilter } from "@/src/hooks/useCountryFilter";
@@ -14,9 +20,18 @@ export type Props = {
   countryList: CountryConfig[];
   value: string;
   onChange: (value?: string) => void;
-};
+  // vi tillader autoComplete eksplicit, selvom browseren reelt ikke gør noget smart med den her
+  autoComplete?: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const CountryCodeInput: FC<Props> = ({ countryList, value, onChange }) => {
+export const CountryCodeInput: FC<Props> = ({
+  countryList,
+  value,
+  onChange,
+  className,
+  autoComplete: _autoComplete, // sluges bare, så TS accepterer prop'en
+  ...buttonProps
+}) => {
   // country list filter logic
   const { filter, setFilter, filteredList } = useCountryFilter(countryList);
 
@@ -29,15 +44,14 @@ export const CountryCodeInput: FC<Props> = ({ countryList, value, onChange }) =>
 
   return (
     <div className="w-36">
-      <Listbox
-        value={selected}
-        onChange={handleSelect}
-      >
+      <Listbox value={selected} onChange={handleSelect}>
         <ListboxButton
           className={cn(
             "relative w-full py-3.5 px-2 text-base text-gray-900 placeholder:text-gray-600 border rounded-md outline-none transition-colors duration-300 flex items-center gap-2",
-            "border-border focus:border-gray-900"
+            "border-border focus:border-gray-900",
+            className
           )}
+          {...buttonProps} // her lander aria-label, aria-invalid, aria-describedby osv.
         >
           <span className="text-xl">{selectedFlag}</span>
           <span className="ml-auto grow-0">{selected}</span>
@@ -74,7 +88,9 @@ export const CountryCodeInput: FC<Props> = ({ countryList, value, onChange }) =>
                 <BodyText className="w-9 shrink-0 text-right text-secondary-foreground! tabular-nums">
                   {code}
                 </BodyText>
-                <BodyText className="mx-2 truncate text-secondary-foreground/40!">{name}</BodyText>
+                <BodyText className="mx-2 truncate text-secondary-foreground/40!">
+                  {name}
+                </BodyText>
               </ListboxOption>
             ))}
             {filteredList.length === 0 && (

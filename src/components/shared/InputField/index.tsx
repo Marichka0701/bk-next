@@ -1,19 +1,28 @@
 "use client";
 
 import { cn } from "@/src/lib/cn";
-import { forwardRef } from "react";
+import { forwardRef, InputHTMLAttributes } from "react";
 import { FieldError } from "react-hook-form";
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   isRequired?: boolean;
-  type?: string;
-  placeholder?: string;
   error?: FieldError;
 }
 
 export const InputField = forwardRef<HTMLInputElement, Props>(
-  ({ label, isRequired = false, type = "text", placeholder = "", error, ...rest }, ref) => {
+  (
+    {
+      label,
+      isRequired = false,
+      type = "text",
+      placeholder = "",
+      error,
+      className,
+      ...rest
+    },
+    ref
+  ) => {
     return (
       <div className="relative w-full">
         <label
@@ -33,9 +42,10 @@ export const InputField = forwardRef<HTMLInputElement, Props>(
             "w-full p-4 text-base text-gray-900 placeholder:text-gray-600 border rounded-md outline-none transition-colors duration-300",
             error
               ? "border-error-100 focus:border-error-100"
-              : "border-border focus:border-gray-900"
+              : "border-border focus:border-gray-900",
+            className // så du kan overskrive/tilføje klasser udefra
           )}
-          {...rest}
+          {...rest} // her ryger autoComplete, aria-*, onChange, osv. ned på <input>
         />
         {error && <p className="mt-1 text-sm text-error-100">{error.message}</p>}
       </div>

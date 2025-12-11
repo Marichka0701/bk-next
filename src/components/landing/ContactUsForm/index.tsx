@@ -107,7 +107,6 @@ export function ContactUsForm() {
         </Headline>
       </div>
 
-      {/* 1) Form får autoComplete + noValidate så vi styrer validation via RHF/Zod */}
       <form onSubmit={handleSubmit(onSubmit)} autoComplete="on" noValidate>
         {step === 1 && (
           <div className="mb-8 space-y-6">
@@ -116,7 +115,7 @@ export function ContactUsForm() {
               placeholder="Dit fulde navn"
               autoComplete="name"
               isRequired
-              autoFocus 
+              autoFocus
               aria-invalid={!!errors.fullName}
               {...register("fullName")}
               error={errors.fullName}
@@ -125,7 +124,7 @@ export function ContactUsForm() {
             <InputField
               label="E-mail"
               type="email"
-              autoComplete="email" 
+              autoComplete="email"
               placeholder="din@email.dk"
               isRequired
               aria-invalid={!!errors.email}
@@ -176,10 +175,11 @@ export function ContactUsForm() {
                 />
               </div>
 
-              {/* 4) Fejl for både phone og countryCode, bundet til aria-describedby */}
               {(errors.phone || errors.countryCode) && (
-                <ErrorText id={phoneErrorId}>
-                  {errors.phone?.message || errors.countryCode?.message}
+                <ErrorText>
+                  <span id={phoneErrorId}>
+                    {errors.phone?.message || errors.countryCode?.message}
+                  </span>
                 </ErrorText>
               )}
             </Field>
@@ -197,8 +197,8 @@ export function ContactUsForm() {
                 {...register("description")}
                 placeholder="Fortæl kort om dit projekt, eller hvad du har brug for hjælp til."
                 rows={4}
-                autoComplete="off" 
-                autoFocus 
+                autoComplete="off"
+                autoFocus
                 aria-invalid={!!errors.description}
                 aria-describedby={errors.description ? descriptionErrorId : undefined}
                 className={cn(
@@ -207,8 +207,8 @@ export function ContactUsForm() {
                 )}
               />
               {errors.description && (
-                <ErrorText id={descriptionErrorId}>
-                  {errors.description.message}
+                <ErrorText>
+                  <span id={descriptionErrorId}>{errors.description.message}</span>
                 </ErrorText>
               )}
             </div>
@@ -253,7 +253,7 @@ export function ContactUsForm() {
               type="button"
               variant="secondary"
               onClick={handleNextStep}
-              disabled={isSubmitting} 
+              disabled={isSubmitting}
               className="flex flex-1 items-center justify-between group"
             >
               <div className="size-5 shrink-0" />
@@ -268,7 +268,7 @@ export function ContactUsForm() {
               type="submit"
               variant="secondary"
               disabled={isSubmitting}
-              aria-busy={isSubmitting} 
+              aria-busy={isSubmitting}
               className={cn(
                 "flex flex-1 items-center justify-between group",
                 isSubmitting && "opacity-50"
