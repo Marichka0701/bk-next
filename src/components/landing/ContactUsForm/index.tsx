@@ -59,6 +59,7 @@ export function ContactUsForm() {
     formData.append("phone", `${data.countryCode}${data.phone.replace(/\D/g, "")}`);
     formData.append("message", data.description || "");
     formData.append("pageUrl", window.location.href || "");
+    formData.append("provider", "byggekredit");
 
     if (data.files?.length) {
       for (const file of data.files) {
