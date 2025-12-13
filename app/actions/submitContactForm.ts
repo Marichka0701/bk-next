@@ -26,9 +26,6 @@ export async function submitContactForm(formData: FormData): Promise<ContactForm
     const apiKey = process.env.SK_API_KEY;
 
     console.log("=== CONTACT FORM SUBMISSION START ===");
-    console.log("API Endpoint configured:", !!apiEndpoint);
-    console.log("API Key configured:", !!apiKey);
-    console.log("API Endpoint URL:", apiEndpoint);
 
     if (!apiEndpoint || !apiKey) {
       console.error("SK_API_ENDPOINT or SK_API_KEY is not configured");
