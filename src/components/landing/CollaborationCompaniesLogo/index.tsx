@@ -3,16 +3,17 @@ import { cn } from "@/src/lib/cn";
 import Image from "next/image";
 import { HTMLAttributes } from "react";
 
-export function CollaborationCompaniesLogo({
-  className,
-  ...rest
-}: HTMLAttributes<HTMLDivElement>) {
+interface Props extends HTMLAttributes<HTMLDivElement> {
+  title: string;
+}
+
+export function CollaborationCompaniesLogo({ title, className, ...rest }: Props) {
   return (
     <div
       className={cn("space-y-5", className)}
       {...rest}
     >
-      <BodyText variant="18Semibold">I samarbejde med</BodyText>
+      <BodyText variant="18Semibold">{title}</BodyText>
 
       <div className="grid grid-cols-2 sm:flex items-center gap-8">
         <Image

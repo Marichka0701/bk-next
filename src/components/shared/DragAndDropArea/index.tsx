@@ -1,3 +1,4 @@
+import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { Upload, X } from "lucide-react";
 import { ChangeEvent, useCallback, useState } from "react";
 import { cn } from "tailwind-variants";
@@ -67,7 +68,7 @@ export function DragAndDropArea({ files, onChange }: Props) {
         />
         <Upload className="mx-auto size-8 text-secondary-foreground/50" />
         <p className="mt-2 text-sm text-secondary-foreground/70">
-          Træk og slip filer her, eller {" "}
+          Træk og slip filer her, eller{" "}
           <span className="text-secondary-foreground underline">klik for at vælge</span>
         </p>
       </div>
@@ -77,9 +78,14 @@ export function DragAndDropArea({ files, onChange }: Props) {
           {files.map((file, index) => (
             <li
               key={`${file.name}-${index}`}
-              className="flex items-center justify-between rounded-md bg-white/10 px-3 py-2 text-sm"
+              className="flex items-center justify-between rounded-md bg-gray-100/10 px-3 py-2"
             >
-              <span className="truncate text-secondary-foreground">{file.name}</span>
+              <BodyText
+                variant="14"
+                className="truncate text-secondary-foreground!"
+              >
+                {file.name}
+              </BodyText>
               <button
                 type="button"
                 onClick={() => removeFile(index)}

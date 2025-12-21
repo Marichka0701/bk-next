@@ -3,9 +3,16 @@ import { AnimatedContainer } from "@/src/components/shared/AnimatedContainer";
 import { AnimatedStaggerContainer } from "@/src/components/shared/AnimatedStaggerContainer";
 import { Container } from "@/src/components/shared/Container";
 import { Headline } from "@/src/components/shared/ui/typography/Headline";
-import { TARGET_AUDIENCE } from "@/src/data/targetAudience";
+import { LandingPage } from "@/src/lib/sanity/types";
 
-export function TargetAudienceSection() {
+export function TargetAudienceSection({
+  title,
+  audiences = [],
+}: LandingPage["targetAudienceSection"]) {
+  const audiencesToMap = Array.isArray(audiences) ? audiences : [];
+
+  if (audiencesToMap.length === 0) return null;
+
   return (
     <Container
       as="section"
@@ -21,7 +28,7 @@ export function TargetAudienceSection() {
             variant="h2"
             className="text-secondary-foreground"
           >
-            Hvem henvender vi os til?
+            {title}
           </Headline>
         </AnimatedContainer>
 
@@ -29,7 +36,7 @@ export function TargetAudienceSection() {
           className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
           staggerDelay={0.15}
         >
-          {TARGET_AUDIENCE.map((item, index) => (
+          {audiencesToMap.map((item, index) => (
             <TargetAudienceCard
               key={index}
               item={item}

@@ -5,11 +5,12 @@ import { AnimatedContainer } from "@/src/components/shared/AnimatedContainer";
 import { Container } from "@/src/components/shared/Container";
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { Headline } from "@/src/components/shared/ui/typography/Headline";
+import { LandingPage } from "@/src/lib/sanity/types";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
 
-export function FundedProjectsSection() {
+export function FundedProjectsSection({ title, projects }: LandingPage["projectsSection"]) {
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [totalSlides, setTotalSlides] = useState(0);
@@ -22,6 +23,10 @@ export function FundedProjectsSection() {
   const handleSlideChange = (swiperInstance: SwiperType) => {
     setActiveIndex(swiperInstance.realIndex);
   };
+
+  const projectsToMap = Array.isArray(projects) ? projects : [];
+
+  if (projectsToMap.length === 0) return null;
 
   return (
     <Container
@@ -39,7 +44,7 @@ export function FundedProjectsSection() {
             variant="h2"
             className="w-full text-center md:text-left text-secondary-foreground!"
           >
-            Projekter vi har finansieret
+            {title}
           </Headline>
 
           <div className="hidden md:flex items-center gap-4">
@@ -59,6 +64,7 @@ export function FundedProjectsSection() {
         </AnimatedContainer>
 
         <FundedProjectsSwiper
+          projects={projectsToMap}
           onSwiper={handleSwiper}
           onSlideChange={handleSlideChange}
         />

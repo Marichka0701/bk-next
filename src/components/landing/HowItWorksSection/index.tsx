@@ -5,10 +5,18 @@ import { Button } from "@/src/components/shared/Button";
 import { Container } from "@/src/components/shared/Container";
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { Headline } from "@/src/components/shared/ui/typography/Headline";
+import { urlForImage } from "@/src/lib/sanity/image";
+import { LandingPage } from "@/src/lib/sanity/types";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { Image } from "next-sanity/image";
 
-export function HowItWorksSection() {
+export function HowItWorksSection({
+  title,
+  subtitle,
+  image,
+  steps,
+  ctaButton,
+}: LandingPage["howItWorksSection"]) {
   return (
     <Container
       as="section"
@@ -22,14 +30,16 @@ export function HowItWorksSection() {
           preset="fadeRight"
           delay={0.2}
         >
-          <Image
-            src="/landing-section-bg/how-it-works-bg.webp"
-            alt="hero section bg"
-            width={450}
-            height={580}
-            draggable={false}
-            className="w-full md:w-[350px] lg:w-[450px] h-fit rounded-xl"
-          />
+          {image && (
+            <Image
+              src={urlForImage(image).url()}
+              alt={image.alt || "How it works image bg"}
+              draggable={false}
+              width={450}
+              height={580}
+              className="w-full md:w-[350px] lg:w-[450px] h-fit rounded-xl"
+            />
+          )}
         </AnimatedContainer>
 
         <AnimatedStaggerContainer
@@ -47,7 +57,7 @@ export function HowItWorksSection() {
               variant="h2"
               className="text-secondary-foreground mb-5 text-center md:text-left"
             >
-              Sådan fungerer det
+              {title}
             </Headline>
           </AnimatedContainer>
 
@@ -56,7 +66,7 @@ export function HowItWorksSection() {
             staggerItem
           >
             <BodyText className="mb-7.5 md:mb-10 text-gray-700! text-center md:text-left">
-              Fra første henvendelse til færdigt projekt. Klar og tydelig kommunikation hele vejen.
+              {subtitle}
             </BodyText>
           </AnimatedContainer>
 
@@ -65,7 +75,7 @@ export function HowItWorksSection() {
             staggerItem
             className="w-full"
           >
-            <AnimatedStepper />
+            <AnimatedStepper initialsSteps={steps || []} />
           </AnimatedContainer>
 
           <AnimatedContainer
@@ -75,7 +85,7 @@ export function HowItWorksSection() {
           >
             <Button className="mt-7.5 md:mt-10 flex items-center justify-between group">
               <div className="size-5 shrink-0" />
-              Kom i gang
+              {ctaButton}
               <ArrowRight
                 size={20}
                 className="text-foreground transition-transform duration-300 group-hover:translate-x-1"

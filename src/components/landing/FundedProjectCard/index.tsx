@@ -1,17 +1,18 @@
 import { BudgetFormatter } from "@/src/components/landing/BudgetFormatter";
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { Headline } from "@/src/components/shared/ui/typography/Headline";
-import { FundedProject } from "@/src/data/fundedProjects";
 import { cn } from "@/src/lib/cn";
-import Image from "next/image";
+import { urlForImage } from "@/src/lib/sanity/image";
+import { Project } from "@/src/lib/sanity/types";
+import { Image } from "next-sanity/image";
 import { HTMLAttributes } from "react";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  item: FundedProject;
+  item: Project;
 }
 
 export function FundedProjectCard({
-  item: { imageSrc, imageAlt, title, description, budget, isFlexibleFinancing },
+  item: { image, title, description, budget, isFlexibleFinancing },
   className,
   ...rest
 }: Props) {
@@ -23,14 +24,16 @@ export function FundedProjectCard({
       )}
       {...rest}
     >
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        width={340}
-        height={220}
-        draggable={false}
-        className="w-full h-[220px] rounded-lg object-cover"
-      />
+      {image && (
+        <Image
+          src={urlForImage(image).url()}
+          alt={image.alt || title}
+          width={340}
+          height={220}
+          draggable={false}
+          className="w-full h-[220px] rounded-lg object-cover"
+        />
+      )}
 
       {isFlexibleFinancing && (
         <div className="min-h-8 px-3 absolute top-9 left-9 bg-brand-secondary-100 rounded-full flex justify-center items-center">

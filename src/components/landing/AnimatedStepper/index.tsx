@@ -2,25 +2,24 @@
 
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { cn } from "@/src/lib/cn";
+import { LandingPage } from "@/src/lib/sanity/types";
 import { motion, useInView } from "framer-motion";
 import { Check } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const steps = [
-  { id: 1, label: "Henvendelse" },
-  { id: 2, label: "Vurdering" },
-  { id: 3, label: "Tilbud" },
-  { id: 4, label: "Løbende udbetaling og opfølgning" },
-  {
-    id: 5,
-    label: "Dit byggeprojekt realiseres",
-    isLast: true,
-  },
-];
+interface Props {
+  initialsSteps: LandingPage["howItWorksSection"]["steps"];
+}
 
-export function AnimatedStepper() {
+export function AnimatedStepper({ initialsSteps = [] }: Props) {
   const [activeStep, setActiveStep] = useState(1);
+
+  const steps = initialsSteps.map((step, index) => ({
+    id: index + 1,
+    label: step.title,
+    isLast: index === initialsSteps.length - 1,
+  }));
 
   const containerRef = useRef(null);
 

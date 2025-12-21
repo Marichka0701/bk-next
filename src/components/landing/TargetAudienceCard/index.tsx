@@ -1,31 +1,32 @@
 import { AnimatedContainer } from "@/src/components/shared/AnimatedContainer";
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { Headline } from "@/src/components/shared/ui/typography/Headline";
-import { TargetAudience } from "@/src/data/targetAudience";
+import { urlForImage } from "@/src/lib/sanity/image";
+import { LandingPage } from "@/src/lib/sanity/types";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { Image } from "next-sanity/image";
 
 interface Props {
-  item: TargetAudience;
+  item: LandingPage["targetAudienceSection"]["audiences"][number];
 }
 
-export function TargetAudienceCard({
-  item: { imageSrc, imageAlt, title, description, ctaButton },
-}: Props) {
+export function TargetAudienceCard({ item: { title, description, image, ctaText } }: Props) {
   return (
     <AnimatedContainer
       preset="fadeUp"
       staggerItem
       className="w-full bg-secondary-background rounded-xl py-6 px-4.5 flex flex-col border border-gray-500"
     >
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        width={340}
-        height={220}
-        draggable={false}
-        className="w-full h-[220px] rounded-lg object-cover"
-      />
+      {image && (
+        <Image
+          src={urlForImage(image).url()}
+          alt={image.alt || title}
+          width={340}
+          height={220}
+          draggable={false}
+          className="w-full h-[220px] rounded-lg object-cover"
+        />
+      )}
 
       <div className="mt-5 md:mt-7 flex-1 flex flex-col justify-between gap-6 md:gap-12">
         <div className="space-y-4">
@@ -44,7 +45,7 @@ export function TargetAudienceCard({
             variant="20Medium"
             className="text-brand-primary! group-hover:underline group-hover:text-secondary-orange!"
           >
-            {ctaButton}
+            {ctaText}
           </BodyText>
           <ArrowRight
             size={20}

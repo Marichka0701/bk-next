@@ -2,12 +2,12 @@ import { BodyText, BodyTextProps } from "@/src/components/shared/ui/typography/B
 import { cn } from "@/src/lib/cn";
 import { ReactNode } from "react";
 
-interface ErrorTextProps extends Omit<BodyTextProps, "variant"> {
+interface Props extends Omit<BodyTextProps, "variant"> {
   children: ReactNode;
   variant?: BodyTextProps["variant"];
 }
 
-export function ErrorText({ children, className, variant = "14", ...props }: ErrorTextProps) {
+export function ErrorText({ children, className, variant = "14", ...props }: Props) {
   return (
     <BodyText
       variant={variant}

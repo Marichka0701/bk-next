@@ -5,15 +5,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { FundedProjectCard } from "@/src/components/landing/FundedProjectCard";
 import { AnimatedContainer } from "@/src/components/shared/AnimatedContainer";
-import { FUNDED_PROJECTS } from "@/src/data/fundedProjects";
+import { Project } from "@/src/lib/sanity/types";
 import { useState } from "react";
 
 interface Props {
+  projects: Project[];
   onSwiper?: (swiper: SwiperType) => void;
   onSlideChange?: (swiper: SwiperType) => void;
 }
 
-export function FundedProjectsSwiper({ onSwiper, onSlideChange }: Props) {
+export function FundedProjectsSwiper({ projects, onSwiper, onSlideChange }: Props) {
   const [hasInteracted, setHasInteracted] = useState(false);
 
   const handleSlideChange = (swiper: SwiperType) => {
@@ -36,7 +37,7 @@ export function FundedProjectsSwiper({ onSwiper, onSlideChange }: Props) {
         1024: { slidesPerView: 3, spaceBetween: 20 },
       }}
     >
-      {FUNDED_PROJECTS.map((item, index) => (
+      {projects.map((item, index) => (
         <SwiperSlide
           key={index}
           className="h-auto!"

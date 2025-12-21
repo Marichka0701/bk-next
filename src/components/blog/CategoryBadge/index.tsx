@@ -1,22 +1,19 @@
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { cn } from "@/src/lib/cn";
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes } from "react";
 
-type CategoryBadgeVariant = "primary" | "secondary";
-
-interface Props {
-  children: ReactNode;
-  className?: string;
-  variant?: CategoryBadgeVariant;
+interface Props extends ButtonHTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
   isSelected?: boolean;
+  variant?: "primary" | "secondary";
 }
 
 export function CategoryBadge({
   children,
-  className,
+  isSelected = false,
   variant = "primary",
-  isSelected,
-  ...rest
+  className,
+  ...props
 }: Props) {
   return (
     <div
@@ -27,7 +24,7 @@ export function CategoryBadge({
         variant === "secondary" && "bg-gray-500/50",
         className
       )}
-      {...rest}
+      {...props}
     >
       <BodyText
         variant="14"

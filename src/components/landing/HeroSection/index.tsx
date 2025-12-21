@@ -5,8 +5,15 @@ import { AnimatedContainer } from "@/src/components/shared/AnimatedContainer";
 import { Container } from "@/src/components/shared/Container";
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { Headline } from "@/src/components/shared/ui/typography/Headline";
+import { LandingPage } from "@/src/lib/sanity/types";
 
-export function HeroSection() {
+export function HeroSection({
+  badge,
+  headline,
+  subheadline,
+  partnersTitle,
+  partnerLogos,
+}: LandingPage["heroSection"]) {
   return (
     <Container
       as="section"
@@ -46,7 +53,7 @@ export function HeroSection() {
                 variant="14Semibold"
                 className="text-secondary-orange-100!"
               >
-                Mere end 20 års erfaring
+                {badge}
               </BodyText>
             </AnimatedContainer>
 
@@ -54,17 +61,14 @@ export function HeroSection() {
               preset="fadeUp"
               delay={0.2}
             >
-              <Headline>Din professionelle partner i byggefinansiering</Headline>
+              <Headline>{headline}</Headline>
             </AnimatedContainer>
 
             <AnimatedContainer
               preset="fadeUp"
               delay={0.3}
             >
-              <BodyText className="mt-6 md:mt-10 md:mb-12.5">
-                Vi finansierer projekter i alle størrelser – fra boligbyggeri til større
-                investeringer. Byggefinansiering med sikkerhed, indsigt og en effektiv proces.
-              </BodyText>
+              <BodyText className="mt-6 md:mt-10 md:mb-12.5">{subheadline}</BodyText>
             </AnimatedContainer>
 
             <AnimatedContainer
@@ -73,7 +77,7 @@ export function HeroSection() {
               delay={0.5}
               duration={0.8}
             >
-              <CollaborationCompaniesLogo />
+              <CollaborationCompaniesLogo title={partnersTitle} />
             </AnimatedContainer>
           </AnimatedContainer>
 
@@ -92,7 +96,7 @@ export function HeroSection() {
             delay={0.6}
             duration={0.7}
           >
-            <CollaborationCompaniesLogo />
+            <CollaborationCompaniesLogo title={partnersTitle} />
           </AnimatedContainer>
         </div>
       </Container>
