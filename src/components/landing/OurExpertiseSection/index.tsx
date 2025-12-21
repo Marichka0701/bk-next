@@ -1,8 +1,11 @@
+"use client";
+
 import { AnimatedContainer } from "@/src/components/shared/AnimatedContainer";
 import { Button } from "@/src/components/shared/Button";
 import { Container } from "@/src/components/shared/Container";
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { Headline } from "@/src/components/shared/ui/typography/Headline";
+import { useContactFormScroll } from "@/src/hooks/useContactFormScroll";
 import { urlForImage } from "@/src/lib/sanity/image";
 import { LandingPage } from "@/src/lib/sanity/types";
 import { ArrowRight } from "lucide-react";
@@ -16,6 +19,8 @@ export function OurExpertiseSection({
   testimonial,
   ctaButton,
 }: LandingPage["experienceSection"]) {
+  const scrollToForm = useContactFormScroll();
+
   if (!title && !content) return null;
 
   return (
@@ -82,9 +87,7 @@ export function OurExpertiseSection({
                   value={content}
                   components={{
                     block: {
-                      normal: ({ children }) => (
-                        <BodyText>{children}</BodyText>
-                      ),
+                      normal: ({ children }) => <BodyText>{children}</BodyText>,
                     },
                   }}
                 />
@@ -123,6 +126,7 @@ export function OurExpertiseSection({
             >
               <Button
                 variant="secondary"
+                onClick={scrollToForm}
                 className="mt-10 max-w-none md:max-w-xs flex items-center justify-between group"
               >
                 {/* empty div for spacing */}

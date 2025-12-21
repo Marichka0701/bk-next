@@ -12,7 +12,6 @@ export function HeroSection({
   headline,
   subheadline,
   partnersTitle,
-  partnerLogos,
 }: LandingPage["heroSection"]) {
   return (
     <Container

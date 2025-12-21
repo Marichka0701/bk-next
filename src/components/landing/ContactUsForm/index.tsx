@@ -121,7 +121,7 @@ export function ContactUsForm() {
   const descriptionErrorId = `${id}-description-error`;
 
   return (
-    <div className="w-full max-w-xl lg:min-w-[450px] bg-secondary-background py-8 md:py-12.5 px-4 md:px-10 lg:w-fit rounded-xl flex flex-col gap-8">
+    <div id="contact-us-form" className="w-full max-w-xl lg:min-w-[450px] bg-secondary-background py-8 md:py-12.5 px-4 md:px-10 lg:w-fit rounded-xl flex flex-col gap-8">
       <div className="flex flex-col gap-4">
         <Headline
           as="h3"
@@ -140,6 +140,7 @@ export function ContactUsForm() {
         {step === 1 && (
           <div className="mb-8 space-y-6">
             <InputField
+              id="first-name-input"
               label="Fornavn"
               placeholder="Dit fornavn"
               autoComplete="given-name"

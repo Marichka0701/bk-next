@@ -95,7 +95,6 @@ export interface LandingPage {
     headline: string;
     subheadline: string;
     partnersTitle: string;
-    partnerLogos: Array<SanityImage & { url?: string }>;
   };
   howItWorksSection: {
     title: string;

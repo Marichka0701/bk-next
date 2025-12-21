@@ -1,3 +1,5 @@
+"use client";
+
 import { AnimatedStepper } from "@/src/components/landing/AnimatedStepper";
 import { AnimatedContainer } from "@/src/components/shared/AnimatedContainer";
 import { AnimatedStaggerContainer } from "@/src/components/shared/AnimatedStaggerContainer";
@@ -5,6 +7,7 @@ import { Button } from "@/src/components/shared/Button";
 import { Container } from "@/src/components/shared/Container";
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { Headline } from "@/src/components/shared/ui/typography/Headline";
+import { useContactFormScroll } from "@/src/hooks/useContactFormScroll";
 import { urlForImage } from "@/src/lib/sanity/image";
 import { LandingPage } from "@/src/lib/sanity/types";
 import { ArrowRight } from "lucide-react";
@@ -17,6 +20,8 @@ export function HowItWorksSection({
   steps,
   ctaButton,
 }: LandingPage["howItWorksSection"]) {
+  const scrollToForm = useContactFormScroll();
+
   return (
     <Container
       as="section"
@@ -83,7 +88,10 @@ export function HowItWorksSection({
             staggerItem
             className="w-full flex justify-center md:justify-start"
           >
-            <Button className="mt-7.5 md:mt-10 flex items-center justify-between group">
+            <Button
+              onClick={scrollToForm}
+              className="mt-7.5 md:mt-10 flex items-center justify-between group"
+            >
               <div className="size-5 shrink-0" />
               {ctaButton}
               <ArrowRight

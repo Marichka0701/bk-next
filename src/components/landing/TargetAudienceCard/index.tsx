@@ -1,6 +1,9 @@
+"use client";
+
 import { AnimatedContainer } from "@/src/components/shared/AnimatedContainer";
 import { BodyText } from "@/src/components/shared/ui/typography/BodyText";
 import { Headline } from "@/src/components/shared/ui/typography/Headline";
+import { useContactFormScroll } from "@/src/hooks/useContactFormScroll";
 import { urlForImage } from "@/src/lib/sanity/image";
 import { LandingPage } from "@/src/lib/sanity/types";
 import { ArrowRight } from "lucide-react";
@@ -11,6 +14,8 @@ interface Props {
 }
 
 export function TargetAudienceCard({ item: { title, description, image, ctaText } }: Props) {
+  const scrollToForm = useContactFormScroll();
+
   return (
     <AnimatedContainer
       preset="fadeUp"
@@ -40,7 +45,10 @@ export function TargetAudienceCard({ item: { title, description, image, ctaText 
           <BodyText className="text-gray-600!">{description}</BodyText>
         </div>
 
-        <button className="group flex items-center justify-center md:justify-start gap-2 cursor-pointer rounded-lg outline-none">
+        <button
+          onClick={scrollToForm}
+          className="group flex items-center justify-center md:justify-start gap-2 cursor-pointer rounded-lg outline-none"
+        >
           <BodyText
             variant="20Medium"
             className="text-brand-primary! group-hover:underline group-hover:text-secondary-orange!"

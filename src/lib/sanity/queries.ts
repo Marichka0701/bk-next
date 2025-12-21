@@ -130,11 +130,6 @@ export const landingPageQuery = `
       headline,
       subheadline,
       partnersTitle,
-      partnerLogos[] {
-        asset,
-        alt,
-        url
-      }
     },
     howItWorksSection {
       title,
